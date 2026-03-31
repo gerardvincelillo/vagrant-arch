@@ -117,6 +117,7 @@ cat > /etc/systemd/system/getty@tty1.service.d/autologin.conf << 'EOF'
 ExecStart=
 ExecStart=-/sbin/agetty --autologin vagrant --noclear %I $TERM
 Type=simple
+RestartSec=1s
 EOF
 
 systemctl daemon-reload

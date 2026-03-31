@@ -7,7 +7,7 @@
 
 # ── Background ────────────────────────────────────────────────────────────────
 # Official Arch Linux wallpaper via the archlinux-wallpaper package.
-feh --no-fehbg --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.png &
+feh --no-fehbg --bg-fill /usr/share/backgrounds/archlinux/archwave.png &
 
 # ── Compositor ────────────────────────────────────────────────────────────────
 # xrender backend — safe for VirtualBox without 3D acceleration.
