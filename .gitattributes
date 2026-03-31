@@ -1,0 +1,12 @@
+# Force LF line endings for all files in this repo.
+# Without this, Windows Git (core.autocrlf=true) re-introduces CRLF
+# which breaks shell scripts and config files deployed to the Linux VM.
+* text=auto eol=lf
+
+# Explicitly mark shell/config files as text with LF
+*.sh        text eol=lf
+*.toml      text eol=lf
+*.xml       text eol=lf
+*.conf      text eol=lf
+Vagrantfile text eol=lf
+config/**   text eol=lf

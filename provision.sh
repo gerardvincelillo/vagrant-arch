@@ -63,6 +63,7 @@ pacman -S --noconfirm --needed \
     xorg-xinit \
     xorg-xrandr \
     xorg-xsetroot \
+    xorg-xset \
     \
     `# ── Window Manager Stack ──────────────────────` \
     openbox \
@@ -95,7 +96,10 @@ pacman -S --noconfirm --needed \
     networkmanager \
     \
     `# ── Wallpaper ─────────────────────────────────` \
-    archlinux-wallpaper
+    archlinux-wallpaper \
+    \
+    `# ── Utilities ───────────────────────────────────` \
+    dos2unix
 
 log "Package installation complete."
 
@@ -155,6 +159,13 @@ install -d -m 755 -o "$VAGRANT_USER" -g "$VAGRANT_USER" "$USER_HOME/.config/alac
 install -m 644 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
     "$CONFIG_SRC/alacritty/alacritty.toml" \
     "$USER_HOME/.config/alacritty/alacritty.toml"
+
+# Strip any Windows CRLF line endings that may have survived the file provisioner
+log "Stripping CRLF from deployed configs..."
+find "$USER_HOME" -maxdepth 4 -type f \
+    \( -name "*.xml" -o -name "*.toml" -o -name "autostart" \
+       -o -name "tint2rc" -o -name ".xinitrc" \) \
+    -exec dos2unix {} \;
 
 log "Configs deployed to $USER_HOME."
 
