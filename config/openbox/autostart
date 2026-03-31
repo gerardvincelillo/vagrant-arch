@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# =============================================================================
+# ~/.config/openbox/autostart
+# Executed by openbox-session after the WM initialises.
+# Each long-running process must be backgrounded with &
+# =============================================================================
+
+# ── Background ────────────────────────────────────────────────────────────────
+# Solid deep-blue background; no external image file required.
+xsetroot -solid "#0f0f1a" &
+
+# ── Compositor ────────────────────────────────────────────────────────────────
+# xrender backend — safe for VirtualBox without 3D acceleration.
+# Provides subtle window shadows and prevents screen tearing.
+# Comment out if you see rendering artefacts or high CPU usage.
+picom \
+    --backend xrender \
+    --no-fading-openclose \
+    --shadow \
+    --shadow-radius 6 \
+    --shadow-opacity 0.5 \
+    --shadow-offset-x -4 \
+    --shadow-offset-y -4 \
+    --inactive-opacity 0.92 \
+    &
+
+# ── Panel ─────────────────────────────────────────────────────────────────────
+# tint2 reads ~/.config/tint2/tint2rc
+# Sets _NET_WM_STRUT so Openbox reserves the panel area for windows.
+tint2 &
+
+# ── Notification daemon ───────────────────────────────────────────────────────
+dunst &
+
+# ── System info on first login (optional) ─────────────────────────────────────
+# Opens a terminal with fastfetch on session start.
+# Comment out if you prefer a clean desktop on login.
+alacritty --title "Welcome to ArchDev" -e bash -c "fastfetch; echo; echo 'Press Enter to close'; read" &

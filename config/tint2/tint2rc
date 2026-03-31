@@ -1,0 +1,103 @@
+# =============================================================================
+# tint2rc — ArchDev panel configuration
+# Location: ~/.config/tint2/tint2rc
+#
+# Layout:  [  Tasks / Taskbar  ]  [SysTray]  [Clock]
+# Position: bottom, full-width, 30px tall
+# Theme:    dark navy — matches #0f0f1a desktop background
+# =============================================================================
+
+# ── Backgrounds ───────────────────────────────────────────────────────────────
+# Each `rounded =` block defines the NEXT background ID (starting at 1).
+# ID 0 is always transparent (built-in, cannot be overridden).
+
+# Background 1 — panel bar
+rounded = 0
+border_width = 0
+background_color = #0f0f1a 96
+border_color = #0f0f1a 100
+
+# Background 2 — inactive task button
+rounded = 3
+border_width = 1
+background_color = #1a1a3a 75
+border_color = #2a2a55 70
+
+# Background 3 — active (focused) task button
+rounded = 3
+border_width = 1
+background_color = #3a3a70 95
+border_color = #6868b8 100
+
+# Background 4 — urgent task button
+rounded = 3
+border_width = 2
+background_color = #6b2020 90
+border_color = #cc4444 100
+
+# ── Panel ─────────────────────────────────────────────────────────────────────
+# Items: T=taskbar, S=systray, C=clock
+panel_items = TSC
+panel_size = 100% 30
+panel_margin = 0 0
+panel_padding = 4 0 4
+panel_background_id = 1
+wm_menu = 1
+panel_dock = 0
+panel_layer = top
+panel_position = bottom center horizontal
+panel_monitor = all
+primary_monitor_first = 1
+autohide = 0
+panel_shrink = 0
+
+# ── Taskbar ───────────────────────────────────────────────────────────────────
+taskbar_mode = multi_desktop
+taskbar_padding = 0 0 2
+taskbar_background_id = 0
+taskbar_active_background_id = 0
+taskbar_name = 1
+taskbar_name_font_color = #8888bb 100
+taskbar_name_active_font_color = #aaaadd 100
+taskbar_hide_inactive_tasks = 0
+taskbar_hide_different_monitor = 0
+taskbar_always_show_all_desktop_tasks = 0
+taskbar_sort_order = none
+task_align = left
+
+# ── Tasks ─────────────────────────────────────────────────────────────────────
+task_text = 1
+task_icon = 0
+task_centered = 1
+task_maximum_size = 200 22
+task_padding = 4 2 4
+task_font = DejaVu Sans 9
+task_font_color = #b0b8cc 100
+task_active_font_color = #ffffff 100
+task_iconified_font_color = #5a5a80 100
+task_background_id = 2
+task_active_background_id = 3
+task_iconified_background_id = 2
+task_urgent_background_id = 4
+mouse_left = toggle_iconify
+mouse_middle = close
+mouse_right = none
+mouse_scroll_up = prev_task
+mouse_scroll_down = next_task
+
+# ── System Tray ───────────────────────────────────────────────────────────────
+system_tray_padding = 0 4 4
+system_tray_sort = ascending
+system_tray_icon_size = 16
+system_tray_icon_asb = 100 0 0
+system_tray_name = 1
+
+# ── Clock ─────────────────────────────────────────────────────────────────────
+time1_format = %H:%M
+time2_format = %a %d
+time1_font = DejaVu Sans Bold 10
+time2_font = DejaVu Sans 8
+clock_font_color = #c4c9d4 100
+clock_padding = 8 0
+clock_background_id = 0
+clock_tooltip = %A %d %B %Y

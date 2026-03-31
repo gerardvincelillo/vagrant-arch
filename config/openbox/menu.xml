@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Openbox root menu — ArchDev
+  Location: ~/.config/openbox/menu.xml
+  Triggered by: right-click on desktop
+-->
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+  <!-- ── Applications submenu ──────────────────────────────────────────────── -->
+  <menu id="apps-menu" label="Applications">
+    <item label="htop  (process monitor)">
+      <action name="Execute">
+        <command>alacritty -e htop</command>
+      </action>
+    </item>
+    <item label="tmux  (terminal multiplexer)">
+      <action name="Execute">
+        <command>alacritty -e tmux</command>
+      </action>
+    </item>
+    <item label="fastfetch  (system info)">
+      <action name="Execute">
+        <command>alacritty -e fastfetch</command>
+      </action>
+    </item>
+    <separator/>
+    <item label="xterm  (fallback terminal)">
+      <action name="Execute">
+        <command>xterm</command>
+      </action>
+    </item>
+  </menu>
+
+  <!-- ── Root menu ─────────────────────────────────────────────────────────── -->
+  <menu id="root-menu" label="ArchDev">
+
+    <item label="Terminal">
+      <action name="Execute"><command>alacritty</command></action>
+    </item>
+
+    <item label="App Launcher  (rofi)">
+      <action name="Execute"><command>rofi -show drun</command></action>
+    </item>
+
+    <item label="Run Command   (rofi)">
+      <action name="Execute"><command>rofi -show run</command></action>
+    </item>
+
+    <separator/>
+
+    <menu id="apps-menu" label="Applications"/>
+
+    <separator/>
+
+    <!-- Desktop management is appended automatically by Openbox -->
+    <menu id="client-list-combined-menu" label="Windows"/>
+
+    <separator/>
+
+    <item label="Reload Config">
+      <action name="Reconfigure"/>
+    </item>
+
+    <item label="Restart Openbox">
+      <action name="Restart"/>
+    </item>
+
+    <separator/>
+
+    <item label="Exit Session">
+      <action name="Exit">
+        <prompt>yes</prompt>
+      </action>
+    </item>
+
+  </menu>
+
+</openbox_menu>

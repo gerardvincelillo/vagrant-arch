@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Openbox window manager configuration — ArchDev
+  Location: ~/.config/openbox/rc.xml
+
+  Key Bindings Summary:
+  ─────────────────────────────────────────────────────────────────────────────
+  Super+Enter / Ctrl+Alt+T   Terminal (alacritty)
+  Super+Space                App launcher (rofi drun)
+  Super+d                    Command runner (rofi run)
+  Alt+F4                     Close focused window
+  Super+f                    Toggle fullscreen
+  Super+Up                   Maximize window
+  Super+Down                 Restore/unmaximize window
+  Super+Left                 Tile window to left half
+  Super+Right                Tile window to right half
+  Alt+Tab / Alt+Shift+Tab    Cycle through windows
+  Super+1/2/3                Switch to desktop 1/2/3
+  Super+Shift+1/2/3          Move window to desktop 1/2/3
+  Super+r                    Reload Openbox config (live)
+  ─────────────────────────────────────────────────────────────────────────────
+  Mouse: Right-click desktop → root menu
+         Middle-click desktop → window list
+         Alt+Left drag        → move window
+         Alt+Right drag       → resize window
+-->
+<openbox_config
+    xmlns="http://openbox.org/3.4/rc"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <!-- ── Resistance ──────────────────────────────────────────────────────── -->
+  <resistance>
+    <strength>10</strength>
+    <screen_edge_strength>20</screen_edge_strength>
+  </resistance>
+
+  <!-- ── Focus ───────────────────────────────────────────────────────────── -->
+  <focus>
+    <focusNew>yes</focusNew>
+    <followMouse>no</followMouse>
+    <focusLast>yes</focusLast>
+    <underMouse>no</underMouse>
+    <focusDelay>200</focusDelay>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+
+  <!-- ── Placement ───────────────────────────────────────────────────────── -->
+  <placement>
+    <policy>Smart</policy>
+    <center>yes</center>
+    <monitor>Primary</monitor>
+    <primaryMonitor>1</primaryMonitor>
+  </placement>
+
+  <!-- ── Theme ────────────────────────────────────────────────────────────── -->
+  <!-- Onyx-dark ships with the openbox package; dark titlebar, minimal chrome -->
+  <theme>
+    <name>Onyx-dark</name>
+    <titleLayout>NLIMC</titleLayout>
+    <keepBorder>yes</keepBorder>
+    <animateIconify>yes</animateIconify>
+    <font place="ActiveWindow">
+      <name>DejaVu Sans</name>
+      <size>9</size>
+      <weight>bold</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="InactiveWindow">
+      <name>DejaVu Sans</name>
+      <size>9</size>
+      <weight>normal</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="MenuHeader">
+      <name>DejaVu Sans</name>
+      <size>9</size>
+      <weight>bold</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="MenuItem">
+      <name>DejaVu Sans</name>
+      <size>9</size>
+      <weight>normal</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="ActiveOnScreenDisplay">
+      <name>DejaVu Sans</name>
+      <size>9</size>
+      <weight>bold</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="InactiveOnScreenDisplay">
+      <name>DejaVu Sans</name>
+      <size>9</size>
+      <weight>normal</weight>
+      <slant>normal</slant>
+    </font>
+  </theme>
+
+  <!-- ── Desktops ─────────────────────────────────────────────────────────── -->
+  <desktops>
+    <number>3</number>
+    <firstdesk>1</firstdesk>
+    <names>
+      <name>Dev</name>
+      <name>Web</name>
+      <name>Tools</name>
+    </names>
+    <popupTime>875</popupTime>
+  </desktops>
+
+  <!-- ── Resize ───────────────────────────────────────────────────────────── -->
+  <resize>
+    <drawContents>yes</drawContents>
+    <popupShow>Nonpixel</popupShow>
+    <popupPosition>Center</popupPosition>
+    <popupFixedPosition>
+      <x>10</x>
+      <y>10</y>
+    </popupFixedPosition>
+  </resize>
+
+  <!-- ── Margins ──────────────────────────────────────────────────────────── -->
+  <!-- Margins are 0 — tint2 sets _NET_WM_STRUT so Openbox respects the panel -->
+  <margins>
+    <top>0</top>
+    <bottom>0</bottom>
+    <left>0</left>
+    <right>0</right>
+  </margins>
+
+  <!-- ── Dock ─────────────────────────────────────────────────────────────── -->
+  <dock>
+    <position>TopLeft</position>
+    <floatingX>0</floatingX>
+    <floatingY>0</floatingY>
+    <noStrut>no</noStrut>
+    <stacking>Above</stacking>
+    <direction>Vertical</direction>
+    <autoHide>no</autoHide>
+    <hideDelay>300</hideDelay>
+    <showDelay>300</showDelay>
+    <moveButton>Middle</moveButton>
+  </dock>
+
+  <!-- ── Keyboard ─────────────────────────────────────────────────────────── -->
+  <keyboard>
+    <chainQuitKey>C-g</chainQuitKey>
+
+    <!-- Terminal -->
+    <keybind key="W-Return">
+      <action name="Execute"><command>alacritty</command></action>
+    </keybind>
+    <keybind key="C-A-t">
+      <action name="Execute"><command>alacritty</command></action>
+    </keybind>
+
+    <!-- App launcher -->
+    <keybind key="W-space">
+      <action name="Execute"><command>rofi -show drun</command></action>
+    </keybind>
+    <keybind key="W-d">
+      <action name="Execute"><command>rofi -show run</command></action>
+    </keybind>
+
+    <!-- Window: close -->
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+
+    <!-- Window: fullscreen / maximize / restore -->
+    <keybind key="W-f">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="MaximizeFull"/>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="UnmaximizeFull"/>
+    </keybind>
+
+    <!-- Window: tile left half -->
+    <keybind key="W-Left">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+
+    <!-- Window: tile right half -->
+    <keybind key="W-Right">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>50%</x>
+        <y>0</y>
+        <width>50%</width>
+        <height>100%</height>
+      </action>
+    </keybind>
+
+    <!-- Window cycling -->
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+        <finalactions>
+          <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+        </finalactions>
+      </action>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow">
+        <finalactions>
+          <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+        </finalactions>
+      </action>
+    </keybind>
+
+    <!-- Desktop switch: Super+1/2/3 -->
+    <keybind key="W-1">
+      <action name="GoToDesktop"><to>1</to></action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop"><to>2</to></action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop"><to>3</to></action>
+    </keybind>
+
+    <!-- Move window to desktop: Super+Shift+1/2/3 -->
+    <keybind key="W-S-1">
+      <action name="SendToDesktop"><to>1</to><wrap>no</wrap></action>
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop"><to>2</to><wrap>no</wrap></action>
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop"><to>3</to><wrap>no</wrap></action>
+    </keybind>
+
+    <!-- Openbox: live config reload (no restart needed) -->
+    <keybind key="W-r">
+      <action name="Reconfigure"/>
+    </keybind>
+
+  </keyboard>
+
+  <!-- ── Mouse ────────────────────────────────────────────────────────────── -->
+  <mouse>
+    <dragThreshold>1</dragThreshold>
+    <doubleClickTime>500</doubleClickTime>
+    <screenEdgeWarpTime>0</screenEdgeWarpTime>
+    <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
+
+    <context name="Frame">
+      <!-- Alt+Left drag: move window -->
+      <mousebind button="A-Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Drag">
+        <action name="Move"/>
+      </mousebind>
+      <!-- Alt+Right drag: resize window -->
+      <mousebind button="A-Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="A-Right" action="Drag">
+        <action name="Resize"/>
+      </mousebind>
+    </context>
+
+    <context name="Titlebar">
+      <mousebind button="Left" action="Drag">
+        <action name="Move"/>
+      </mousebind>
+      <mousebind button="Left" action="DoubleClick">
+        <action name="ToggleMaximize"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu"><menu>client-menu</menu></action>
+      </mousebind>
+    </context>
+
+    <context name="Desktop">
+      <!-- Right-click: root menu -->
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu"><menu>root-menu</menu></action>
+      </mousebind>
+      <!-- Middle-click: window list -->
+      <mousebind button="Middle" action="Press">
+        <action name="ShowMenu"><menu>client-list-combined-menu</menu></action>
+      </mousebind>
+    </context>
+
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu"><menu>root-menu</menu></action>
+      </mousebind>
+    </context>
+
+  </mouse>
+
+  <!-- ── Menu ─────────────────────────────────────────────────────────────── -->
+  <menu>
+    <file>menu.xml</file>
+    <hideDelay>200</hideDelay>
+    <middle>no</middle>
+    <submenuShowDelay>100</submenuShowDelay>
+    <submenuHideDelay>400</submenuHideDelay>
+    <applicationIcons>no</applicationIcons>
+    <manageDesktops>yes</manageDesktops>
+  </menu>
+
+  <!-- ── Per-application rules ────────────────────────────────────────────── -->
+  <applications>
+    <!-- No special rules needed for now -->
+  </applications>
+
+</openbox_config>

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# =============================================================================
+# ~/.xinitrc — X session entry point
+# Called by: startx (which is triggered from .bash_profile on tty1)
+# =============================================================================
+
+# ── Display Setup ─────────────────────────────────────────────────────────────
+# Force 96 DPI so fonts render at consistent sizes across resolutions
+xrandr --dpi 96
+
+# Use standard arrow cursor (avoids ugly X default cross cursor)
+xsetroot -cursor_name left_ptr
+
+# Disable DPMS (energy saver) and screen blanking — unwanted in a VM
+xset s off
+xset s noblank
+xset -dpms
+
+# ── Start Session ──────────────────────────────────────────────────────────────
+# openbox-session handles:
+#   1. Reading ~/.config/openbox/rc.xml  (keybindings, theme, behaviour)
+#   2. Executing ~/.config/openbox/autostart (tint2, picom, background, etc.)
+#   3. Managing the session lifecycle
+exec openbox-session

@@ -1,0 +1,96 @@
+# =============================================================================
+# alacritty.toml — ArchDev terminal configuration
+# Location: ~/.config/alacritty/alacritty.toml
+# Requires: alacritty >= 0.12 (TOML config format)
+# =============================================================================
+
+# ── Window ────────────────────────────────────────────────────────────────────
+[window]
+padding          = { x = 10, y = 8 }
+decorations      = "full"
+opacity          = 0.93
+title            = "alacritty"
+dynamic_title    = true
+# startup_mode   = "Maximized"   # uncomment to start maximized
+
+# ── Scrolling ─────────────────────────────────────────────────────────────────
+[scrolling]
+history    = 10000
+multiplier = 3
+
+# ── Font ─────────────────────────────────────────────────────────────────────
+[font]
+size = 11.0
+
+[font.normal]
+family = "DejaVu Sans Mono"
+style  = "Book"
+
+[font.bold]
+family = "DejaVu Sans Mono"
+style  = "Bold"
+
+[font.italic]
+family = "DejaVu Sans Mono"
+style  = "Oblique"
+
+# ── Colors (One Dark inspired, matches desktop palette) ───────────────────────
+[colors.primary]
+background = "#0f0f1a"
+foreground = "#c4c9d4"
+
+[colors.cursor]
+text   = "#0f0f1a"
+cursor = "#c4c9d4"
+
+[colors.selection]
+text       = "CellForeground"
+background = "#3a3a70"
+
+[colors.normal]
+black   = "#1a1a2e"
+red     = "#e06c75"
+green   = "#98c379"
+yellow  = "#e5c07b"
+blue    = "#61afef"
+magenta = "#c678dd"
+cyan    = "#56b6c2"
+white   = "#abb2bf"
+
+[colors.bright]
+black   = "#3a3a5e"
+red     = "#e06c75"
+green   = "#98c379"
+yellow  = "#e5c07b"
+blue    = "#61afef"
+magenta = "#c678dd"
+cyan    = "#56b6c2"
+white   = "#c4c9d4"
+
+# ── Cursor ────────────────────────────────────────────────────────────────────
+[cursor]
+style    = { shape = "Block", blinking = "On" }
+blink_interval = 750
+
+# ── Terminal ──────────────────────────────────────────────────────────────────
+[terminal]
+shell = { program = "/bin/bash" }
+
+# ── Mouse ─────────────────────────────────────────────────────────────────────
+[mouse]
+hide_when_typing = true
+
+# ── Keyboard bindings ─────────────────────────────────────────────────────────
+[keyboard]
+bindings = [
+    # Ctrl+Shift+C/V — copy/paste
+    { key = "C", mods = "Control|Shift", action = "Copy"  },
+    { key = "V", mods = "Control|Shift", action = "Paste" },
+    # Ctrl+Shift+Up/Down — scroll by line
+    { key = "Up",   mods = "Control|Shift", action = "ScrollLineUp"   },
+    { key = "Down", mods = "Control|Shift", action = "ScrollLineDown" },
+    # Ctrl+Shift+= / Ctrl+- — font size
+    { key = "Plus",  mods = "Control|Shift", action = "IncreaseFontSize" },
+    { key = "Minus", mods = "Control",       action = "DecreaseFontSize" },
+    { key = "Key0",  mods = "Control",       action = "ResetFontSize"    },
+]
