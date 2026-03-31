@@ -38,7 +38,7 @@ fi
 step "1/7  Keyring & system update"
 
 log "Disabling pacman download timeout (prevents mirror stall failures)..."
-grep -q "^DisableDownloadTimeout" /etc/pacman.conf || echo "DisableDownloadTimeout" >> /etc/pacman.conf
+grep -q "^DisableDownloadTimeout" /etc/pacman.conf || sed -i '/^\[options\]/a DisableDownloadTimeout' /etc/pacman.conf
 
 log "Initializing pacman keyring (required on fresh boxes)..."
 pacman-key --init
