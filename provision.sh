@@ -54,6 +54,13 @@ pacman -Su --noconfirm
 # ── 2. Package Installation ───────────────────────────────────────────────────
 step "2/7  Installing packages"
 
+# The Roboxes base box ships virtualbox-guest-utils-nox which conflicts with
+# the full (X11) variant needed for clipboard sharing. Remove it first.
+if pacman -Q virtualbox-guest-utils-nox &>/dev/null; then
+    log "Removing conflicting virtualbox-guest-utils-nox..."
+    pacman -Rdd --noconfirm virtualbox-guest-utils-nox
+fi
+
 # Install all packages in a single transaction.
 # --needed skips already-installed packages (safe to re-run if stamp removed).
 pacman -S --noconfirm --needed \
@@ -99,7 +106,10 @@ pacman -S --noconfirm --needed \
     archlinux-wallpaper \
     \
     `# ── Utilities ───────────────────────────────────` \
-    dos2unix
+    dos2unix \
+    \
+    `# ── VirtualBox Guest Additions (userspace) ──────` \
+    virtualbox-guest-utils
 
 log "Package installation complete."
 
