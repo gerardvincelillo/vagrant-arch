@@ -133,7 +133,7 @@ install -m 755 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
     "$CONFIG_SRC/xinitrc" "$USER_HOME/.xinitrc"
 
 # Openbox
-mkdir -p "$USER_HOME/.config/openbox"
+install -d -m 755 -o "$VAGRANT_USER" -g "$VAGRANT_USER" "$USER_HOME/.config/openbox"
 install -m 644 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
     "$CONFIG_SRC/openbox/rc.xml"    "$USER_HOME/.config/openbox/rc.xml"
 install -m 644 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
@@ -142,12 +142,12 @@ install -m 755 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
     "$CONFIG_SRC/openbox/autostart" "$USER_HOME/.config/openbox/autostart"
 
 # tint2
-mkdir -p "$USER_HOME/.config/tint2"
+install -d -m 755 -o "$VAGRANT_USER" -g "$VAGRANT_USER" "$USER_HOME/.config/tint2"
 install -m 644 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
     "$CONFIG_SRC/tint2/tint2rc" "$USER_HOME/.config/tint2/tint2rc"
 
 # alacritty
-mkdir -p "$USER_HOME/.config/alacritty"
+install -d -m 755 -o "$VAGRANT_USER" -g "$VAGRANT_USER" "$USER_HOME/.config/alacritty"
 install -m 644 -o "$VAGRANT_USER" -g "$VAGRANT_USER" \
     "$CONFIG_SRC/alacritty/alacritty.toml" \
     "$USER_HOME/.config/alacritty/alacritty.toml"
