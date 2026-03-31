@@ -24,6 +24,12 @@ picom \
     --inactive-opacity 0.92 \
     &
 
+# ── VirtualBox clipboard & drag-and-drop ─────────────────────────────────────
+# Activates shared clipboard (bidirectional) and drag-and-drop with the host.
+# Requires VirtualBox Guest Additions (pre-installed on generic/arch box).
+VBoxClient --clipboard &
+VBoxClient --draganddrop &
+
 # ── Panel ─────────────────────────────────────────────────────────────────────
 # tint2 reads ~/.config/tint2/tint2rc
 # Sets _NET_WM_STRUT so Openbox reserves the panel area for windows.
