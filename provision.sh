@@ -106,6 +106,10 @@ log "Enabling NetworkManager..."
 systemctl enable NetworkManager
 systemctl start NetworkManager || true
 
+log "Allowing any user to start Xorg (required for startx from tty1)..."
+mkdir -p /etc/X11
+echo -e "allowed_users=anybody\nneeds_root_rights=yes" > /etc/X11/Xwrapper.config
+
 # ── 4. Autologin on tty1 ──────────────────────────────────────────────────────
 step "4/7  Configuring tty1 autologin"
 
