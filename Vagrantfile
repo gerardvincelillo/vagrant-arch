@@ -43,9 +43,10 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
     vb.customize ["modifyvm", :id, "--accelerate3d",       "off"]
 
-    # Bidirectional clipboard and drag-and-drop via Guest Additions
+    # Bidirectional clipboard via Guest Additions
+    # (drag-and-drop disabled — causes VERR_TIMEOUT with VMSVGA on Linux)
     vb.customize ["modifyvm", :id, "--clipboard",          "bidirectional"]
-    vb.customize ["modifyvm", :id, "--draganddrop",        "bidirectional"]
+    vb.customize ["modifyvm", :id, "--draganddrop",        "disabled"]
 
     # No audio device needed for a dev VM
     vb.customize ["modifyvm", :id, "--audio",              "none"]
