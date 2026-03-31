@@ -41,8 +41,12 @@ log "Initializing pacman keyring (required on fresh boxes)..."
 pacman-key --init
 pacman-key --populate archlinux
 
+log "Syncing package databases and updating keyring before full upgrade..."
+pacman -Sy --noconfirm archlinux-keyring
+pacman-key --populate archlinux
+
 log "Full system upgrade..."
-pacman -Syu --noconfirm
+pacman -Su --noconfirm
 
 # ── 2. Package Installation ───────────────────────────────────────────────────
 step "2/7  Installing packages"
@@ -85,7 +89,10 @@ pacman -S --noconfirm --needed \
     htop \
     tmux \
     xdg-user-dirs \
-    networkmanager
+    networkmanager \
+    \
+    `# ── Wallpaper ─────────────────────────────────` \
+    archlinux-wallpaper
 
 log "Package installation complete."
 
